@@ -260,6 +260,29 @@ function App() {
             }}
           >
             <div>
+              {!isSpoonacularConfigured && (
+                <div
+                  style={{
+                    background: "#fffbe5",
+                    color: "#b26a00",
+                    border: "1.5px solid #ffe596",
+                    borderRadius: 8,
+                    padding: "14px 18px",
+                    fontWeight: 600,
+                    marginBottom: 20,
+                    fontSize: 16,
+                    textAlign: "center"
+                  }}
+                  data-testid="api-key-warning"
+                >
+                  <span style={{ fontSize: 22, verticalAlign: "middle" }}>⚠️</span>
+                  <span style={{ marginLeft: 9 }}>
+                    Spoonacular API key not configured!
+                    <br />
+                    Please edit <code style={{ background: "#ffe" }}>SPOONACULAR_API_KEY</code> in <b>App.js</b> to show recipe results.
+                  </span>
+                </div>
+              )}
               <h1 style={{ color: recipeAccent, marginBottom: 8, fontSize: 36 }}>
                 What ingredients do you have?
               </h1>
@@ -351,9 +374,11 @@ function App() {
                     fontWeight: 700,
                     marginTop: 18,
                     fontSize: 18,
+                    opacity: isSpoonacularConfigured ? 1 : 0.6,
+                    cursor: isSpoonacularConfigured ? "pointer" : "not-allowed"
                   }}
                   onClick={handleSearchRecipes}
-                  disabled={!ingredientList.length || loading}
+                  disabled={!ingredientList.length || loading || !isSpoonacularConfigured}
                   data-testid="search-btn"
                 >
                   {loading ? "Searching..." : "Find Recipes"}
