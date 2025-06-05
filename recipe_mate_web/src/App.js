@@ -26,6 +26,7 @@ function App() {
   // API credentials (replace with your API keys)
   const SPOONACULAR_API_KEY = "YOUR_SPOONACULAR_API_KEY";
   const WALMART_API_KEY = "YOUR_WALMART_API_KEY";
+  const isSpoonacularConfigured = SPOONACULAR_API_KEY && SPOONACULAR_API_KEY !== "YOUR_SPOONACULAR_API_KEY";
 
   // Helper for timer ref
   const timerRef = useRef(null);
